@@ -34,36 +34,36 @@ enum EntryAnimation {
 
 class BaseGiffyDialog extends StatefulWidget {
   BaseGiffyDialog({
-    Key key,
-    @required this.imageWidget,
-    @required this.title,
-    @required this.onOkButtonPressed,
-    @required this.description,
-    @required this.onlyOkButton,
-    @required this.onlyCancelButton,
-    @required this.buttonOkText,
-    @required this.buttonCancelText,
-    @required this.buttonOkColor,
-    @required this.buttonCancelColor,
-    @required this.cornerRadius,
-    @required this.buttonRadius,
-    @required this.entryAnimation,
-    @required this.onCancelButtonPressed,
+    Key? key,
+    required this.imageWidget,
+    required this.title,
+    required this.onOkButtonPressed,
+    required this.description,
+    required this.onlyOkButton,
+    required this.onlyCancelButton,
+    required this.buttonOkText,
+    required this.buttonCancelText,
+    required this.buttonOkColor,
+    required this.buttonCancelColor,
+    required this.cornerRadius,
+    required this.buttonRadius,
+    required this.entryAnimation,
+    required this.onCancelButtonPressed,
   }) : super(key: key);
 
-  final Widget imageWidget;
-  final Text title;
-  final Text description;
-  final bool onlyOkButton;
+  final Widget? imageWidget;
+  final Text? title;
+  final Text? description;
+  final bool? onlyOkButton;
   final bool onlyCancelButton;
-  final Text buttonOkText;
-  final Text buttonCancelText;
-  final Color buttonOkColor;
-  final Color buttonCancelColor;
+  final Text? buttonOkText;
+  final Text? buttonCancelText;
+  final Color? buttonOkColor;
+  final Color? buttonCancelColor;
   final double buttonRadius;
   final double cornerRadius;
-  final VoidCallback onOkButtonPressed;
-  final VoidCallback onCancelButtonPressed;
+  final VoidCallback? onOkButtonPressed;
+  final VoidCallback? onCancelButtonPressed;
   final EntryAnimation entryAnimation;
 
   @override
@@ -72,8 +72,8 @@ class BaseGiffyDialog extends StatefulWidget {
 
 class _BaseGiffyDialogState extends State<BaseGiffyDialog>
     with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<Offset> _entryAnimation;
+  late AnimationController _animationController;
+  late Animation<Offset> _entryAnimation;
 
   get _start {
     switch (widget.entryAnimation) {
@@ -122,11 +122,11 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
 
   @override
   void dispose() {
-    _animationController?.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
-  Widget _buildPortraitWidget(BuildContext context, Widget imageWidget) {
+  Widget _buildPortraitWidget(BuildContext context, Widget? imageWidget) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
@@ -158,7 +158,7 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
     );
   }
 
-  Widget _buildLandscapeWidget(BuildContext context, Widget imageWidget) {
+  Widget _buildLandscapeWidget(BuildContext context, Widget? imageWidget) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -195,12 +195,12 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: !widget.onlyOkButton
+        mainAxisAlignment: !(widget.onlyOkButton ?? false)
             ? MainAxisAlignment.spaceEvenly
             : MainAxisAlignment.center,
         children: <Widget>[
-          if (!widget.onlyOkButton) ...[
-            RaisedButton(
+          if (!(widget.onlyOkButton ?? false)) ...[
+            MaterialButton(
               color: widget.buttonCancelColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(widget.buttonRadius)),
@@ -214,7 +214,7 @@ class _BaseGiffyDialogState extends State<BaseGiffyDialog>
             )
           ],
           if (!widget.onlyCancelButton) ...[
-            RaisedButton(
+            MaterialButton(
               color: widget.buttonOkColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(widget.buttonRadius)),

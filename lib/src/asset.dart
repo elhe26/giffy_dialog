@@ -25,16 +25,16 @@ import 'package:giffy_dialog/src/base_dialog.dart';
 /// );
 class AssetGiffyDialog extends StatelessWidget {
   AssetGiffyDialog({
-    Key key,
-    @required this.image,
-    @required this.title,
-    this.onOkButtonPressed,
-    this.onCancelButtonPressed,
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.onOkButtonPressed,
+    required this.onCancelButtonPressed,
     this.description,
     this.onlyOkButton = false,
     this.onlyCancelButton = false,
-    this.buttonOkText,
-    this.buttonCancelText,
+    required this.buttonOkText,
+    required this.buttonCancelText,
     this.buttonOkColor = Colors.green,
     this.buttonCancelColor = Colors.grey,
     this.cornerRadius = 8.0,
@@ -49,13 +49,13 @@ class AssetGiffyDialog extends StatelessWidget {
   /// Pass `Image.asset(name)` widget here.
   /// Preferably with `fit: BoxFit.cover` property to cover entire top part of Giffy Dialog.
   /// All properties of Image widget are directly passed to Giffy Dialog so feel free to experiment.
-  final Image image;
+  final Image? image;
 
   /// Title text.
-  final Text title;
+  final Text? title;
 
   /// Description text.
-  final Text description;
+  final Text? description;
 
   /// Sets dialog to have only OK button.
   ///
@@ -72,12 +72,12 @@ class AssetGiffyDialog extends StatelessWidget {
   /// Text for OK button.
   ///
   /// Default is `OK`.
-  final Text buttonOkText;
+  final Text? buttonOkText;
 
   /// Text for cancel button
   ///
   /// Default is `Cancel`.
-  final Text buttonCancelText;
+  final Text? buttonCancelText;
 
   /// Color of OK button.
   ///

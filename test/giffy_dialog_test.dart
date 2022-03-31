@@ -19,7 +19,7 @@ void main() {
         await tester.pumpWidget(AssetGiffyDialog(
           onOkButtonPressed: () {},
           title: Text(''),
-          image: null,
+          image: null, buttonCancelText: null, buttonOkText: null, onCancelButtonPressed: () {  },
         ));
       } catch (error) {
         expect(error, isAssertionError);
@@ -33,14 +33,16 @@ void main() {
           onOkButtonPressed: () {},
           image: Image.asset('assets/men_wearing_jacket.gif'),
           title: null,
+          buttonCancelText: null,
+          buttonOkText: null,
+          onCancelButtonPressed: () {},
         ));
       } catch (error) {
         expect(error, isAssertionError);
       }
     });
 
-    testWidgets(
-        'FlareGiffyDialog throws if initialized with null flarePath',
+    testWidgets('FlareGiffyDialog throws if initialized with null flarePath',
         (WidgetTester tester) async {
       try {
         await tester.pumpWidget(FlareGiffyDialog(
@@ -48,6 +50,11 @@ void main() {
           title: Text(''),
           flareAnimation: '',
           flarePath: null,
+          buttonCancelText: null,
+          buttonOkText: null,
+          cardBackgroundColor: null,
+          description: null,
+          onCancelButtonPressed: () {},
         ));
       } catch (error) {
         expect(error, isAssertionError);
@@ -56,33 +63,42 @@ void main() {
 
     testWidgets(
         'FlareGiffyDialog throws if initialized with null flareAnimation',
-            (WidgetTester tester) async {
-          try {
-            await tester.pumpWidget(FlareGiffyDialog(
-              onOkButtonPressed: () {},
-              flarePath: 'assets/space_demo.flr',
-              title: Text('loading'),
-              flareAnimation: null,
-            ));
-          } catch (error) {
-            expect(error, isAssertionError);
-          }
-        });
+        (WidgetTester tester) async {
+      try {
+        await tester.pumpWidget(FlareGiffyDialog(
+          onOkButtonPressed: () {},
+          flarePath: 'assets/space_demo.flr',
+          title: Text('loading'),
+          flareAnimation: null,
+          buttonCancelText: null,
+          buttonOkText: null,
+          cardBackgroundColor: null,
+          description: null,
+          onCancelButtonPressed: () {},
+        ));
+      } catch (error) {
+        expect(error, isAssertionError);
+      }
+    });
 
-    testWidgets(
-        'FlareGiffyDialog throws if initialized with null title',
-            (WidgetTester tester) async {
-          try {
-            await tester.pumpWidget(FlareGiffyDialog(
-              onOkButtonPressed: () {},
-              flarePath: 'assets/space_demo.flr',
-              flareAnimation: 'loading',
-              title: null,
-            ));
-          } catch (error) {
-            expect(error, isAssertionError);
-          }
-        });
+    testWidgets('FlareGiffyDialog throws if initialized with null title',
+        (WidgetTester tester) async {
+      try {
+        await tester.pumpWidget(FlareGiffyDialog(
+          onOkButtonPressed: () {},
+          flarePath: 'assets/space_demo.flr',
+          flareAnimation: 'loading',
+          title: null,
+          onCancelButtonPressed: () {},
+          buttonCancelText: null,
+          buttonOkText: null,
+          cardBackgroundColor: null,
+          description: null,
+        ));
+      } catch (error) {
+        expect(error, isAssertionError);
+      }
+    });
 
     testWidgets('NetworkGiffyDialog throws if initialized with null image',
         (WidgetTester tester) async {
@@ -91,6 +107,10 @@ void main() {
           onOkButtonPressed: () {},
           title: Text(''),
           image: null,
+          description: null,
+          buttonOkText: null,
+          onCancelButtonPressed: null,
+          buttonCancelText: null,
         ));
       } catch (error) {
         expect(error, isAssertionError);
@@ -106,6 +126,10 @@ void main() {
             "https://raw.githubusercontent.com/Shashank02051997/FancyGifDialog-Android/master/GIF's/gif14.gif",
           ),
           title: null,
+          buttonOkText: null,
+          onCancelButtonPressed: null,
+          buttonCancelText: null,
+          description: null,
         ));
       } catch (error) {
         expect(error, isAssertionError);
@@ -116,9 +140,8 @@ void main() {
   group('Dialog Smoke and Orientation Test', () {
     testWidgets('Check Portrait Dialog test', (WidgetTester tester) async {
       provideMockedNetworkImages(() async {
-        final TestWidgetsFlutterBinding binding =
-            TestWidgetsFlutterBinding.ensureInitialized();
-        binding.window.physicalSizeTestValue =
+        var binding = TestWidgetsFlutterBinding.ensureInitialized();
+        tester.binding.window.physicalSizeTestValue =
             (Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
 
         // Build our app and trigger a frame.
@@ -155,9 +178,9 @@ void main() {
 
     testWidgets('Check Landscape Dialog test', (WidgetTester tester) async {
       provideMockedNetworkImages(() async {
-        final TestWidgetsFlutterBinding binding =
+        final WidgetsBinding binding =
             TestWidgetsFlutterBinding.ensureInitialized();
-        binding.window.physicalSizeTestValue =
+        tester.binding.window.physicalSizeTestValue =
             Size(LANDSCAPE_WIDTH, LANDSCAPE_HEIGHT);
 
         // Build our app and trigger a frame.

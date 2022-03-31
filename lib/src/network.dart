@@ -17,16 +17,16 @@ import 'base_dialog.dart';
 /// );
 class NetworkGiffyDialog extends StatelessWidget {
   NetworkGiffyDialog({
-    Key key,
-    @required this.image,
-    @required this.title,
-    this.onOkButtonPressed,
-    this.onCancelButtonPressed,
-    this.description,
+    Key? key,
+    required this.image,
+    this.title,
+    required this.onOkButtonPressed,
+    required this.onCancelButtonPressed,
+    required this.description,
     this.onlyOkButton = false,
     this.onlyCancelButton = false,
-    this.buttonOkText,
-    this.buttonCancelText,
+    required this.buttonOkText,
+    required this.buttonCancelText,
     this.buttonOkColor = Colors.green,
     this.buttonCancelColor = Colors.grey,
     this.cornerRadius = 8.0,
@@ -41,13 +41,13 @@ class NetworkGiffyDialog extends StatelessWidget {
   /// Pass `Image.network(src)` widget here.
   /// Preferably with `fit: BoxFit.cover` property to cover entire top part of Giffy Dialog.
   /// All properties of Image widget are directly passed to Giffy Dialog so feel free to experiment.
-  final Widget image;
+  final Widget? image;
 
   /// Title text.
-  final Text title;
+  final Text? title;
 
   /// Description text
-  final Text description;
+  final Text? description;
 
   /// Sets dialog to have only OK button.
   ///
@@ -64,12 +64,12 @@ class NetworkGiffyDialog extends StatelessWidget {
   /// Text for OK button.
   ///
   /// Default is `OK`.
-  final Text buttonOkText;
+  final Text? buttonOkText;
 
   /// Text for cancel button
   ///
   /// Default is `Cancel`.
-  final Text buttonCancelText;
+  final Text? buttonCancelText;
 
   /// Color of OK button.
   ///
@@ -79,7 +79,7 @@ class NetworkGiffyDialog extends StatelessWidget {
   /// Color of Cancel button
   ///
   /// Default is `Colors.grey`.
-  final Color buttonCancelColor;
+  final Color? buttonCancelColor;
 
   /// Radius applied to the button corners.
   ///
@@ -95,12 +95,12 @@ class NetworkGiffyDialog extends StatelessWidget {
   ///
   /// If set to null, then the button will be disabled and by
   /// default will resemble a flat button in the Theme's `disabledColor`.
-  final VoidCallback onOkButtonPressed;
+  final VoidCallback? onOkButtonPressed;
 
   /// Callback function to be called on when Cancel button is pressed.
   ///
   /// By default (or if set to null) closes the Giffy Dialog via `Navigator.of(context).pop()`.
-  final VoidCallback onCancelButtonPressed;
+  final VoidCallback? onCancelButtonPressed;
 
   /// Defines how Giffy Dialog will enter the screen.
   ///
@@ -113,15 +113,15 @@ class NetworkGiffyDialog extends StatelessWidget {
     return BaseGiffyDialog(
       imageWidget: image,
       cornerRadius: cornerRadius,
-      title: title,
-      description: description,
+      title: title!,
+      description: description!,
       onlyOkButton: onlyOkButton,
       onlyCancelButton: onlyCancelButton,
-      buttonCancelColor: buttonCancelColor,
+      buttonCancelColor: buttonCancelColor!,
       buttonRadius: buttonRadius,
-      buttonCancelText: buttonCancelText,
+      buttonCancelText: buttonCancelText!,
       buttonOkColor: buttonOkColor,
-      onOkButtonPressed: onOkButtonPressed,
+      onOkButtonPressed: onOkButtonPressed!,
       onCancelButtonPressed: onCancelButtonPressed,
       buttonOkText: buttonOkText,
       entryAnimation: entryAnimation,

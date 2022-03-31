@@ -24,19 +24,19 @@ import 'base_dialog.dart';
 /// );
 class FlareGiffyDialog extends StatelessWidget {
   FlareGiffyDialog({
-    Key key,
-    @required this.flarePath,
-    @required this.flareAnimation,
-    @required this.title,
-    this.onOkButtonPressed,
+    Key? key,
+    required this.flarePath,
+    required this.flareAnimation,
+    required this.title,
+    required this.onOkButtonPressed,
     this.flareFit = BoxFit.cover,
-    this.onCancelButtonPressed,
-    this.description,
+    required this.onCancelButtonPressed,
+    required this.description,
     this.onlyOkButton = false,
     this.onlyCancelButton = false,
-    this.buttonOkText,
-    this.buttonCancelText,
-    this.cardBackgroundColor,
+    required this.buttonOkText,
+    required this.buttonCancelText,
+    required this.cardBackgroundColor,
     this.buttonOkColor = Colors.green,
     this.buttonCancelColor = Colors.grey,
     this.cornerRadius = 8.0,
@@ -48,19 +48,19 @@ class FlareGiffyDialog extends StatelessWidget {
         super(key: key);
 
   /// Path to the Flare asset.
-  final String flarePath;
+  final String? flarePath;
 
   /// Name of Flare animation to apply.
-  final String flareAnimation;
+  final String? flareAnimation;
 
   /// BoxFit sizing of the Flare asset.
   final BoxFit flareFit;
 
   /// Title text.
-  final Text title;
+  final Text? title;
 
   /// Description text.
-  final Text description;
+  final Text? description;
 
   /// Sets dialog to have only OK button.
   ///
@@ -77,12 +77,12 @@ class FlareGiffyDialog extends StatelessWidget {
   /// Text for OK button.
   ///
   /// Default is `OK`.
-  final Text buttonOkText;
+  final Text? buttonOkText;
 
   /// Text for cancel button
   ///
   /// Default is `Cancel`.
-  final Text buttonCancelText;
+  final Text? buttonCancelText;
 
   /// Color of OK button.
   ///
@@ -95,7 +95,7 @@ class FlareGiffyDialog extends StatelessWidget {
   final Color buttonCancelColor;
 
   /// TODO: this props is not used at the moment.
-  final Color cardBackgroundColor;
+  final Color? cardBackgroundColor;
 
   /// Radius applied to the button corners.
   ///
