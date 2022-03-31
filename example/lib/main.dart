@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
+            MaterialButton(
                 key: keys[0],
                 color: Colors.teal,
                 child: Text(
@@ -65,9 +65,12 @@ class MyHomePage extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                             onOkButtonPressed: () {},
+                            buttonCancelText: null,
+                            buttonOkText: null,
+                            onCancelButtonPressed: () {},
                           ));
                 }),
-            RaisedButton(
+            MaterialButton(
                 key: keys[2],
                 color: Colors.teal,
                 child: Text(
@@ -96,9 +99,13 @@ class MyHomePage extends StatelessWidget {
                               style: TextStyle(),
                             ),
                             onOkButtonPressed: () {},
+                            buttonCancelText: null,
+                            buttonOkText: null,
+                            cardBackgroundColor: null,
+                            onCancelButtonPressed: () {},
                           ));
                 }),
-            RaisedButton(
+            MaterialButton(
                 key: keys[4],
                 color: Colors.teal,
                 child: Text(
@@ -129,6 +136,9 @@ class MyHomePage extends StatelessWidget {
                               style: TextStyle(),
                             ),
                             onOkButtonPressed: () {},
+                            onCancelButtonPressed: () {},
+                            buttonCancelText: null,
+                            buttonOkText: null,
                           ));
                 }),
           ],
